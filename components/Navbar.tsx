@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = ["Home", "About us", "Features", "Testimonial", "FAQs"];
 
+
+
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
