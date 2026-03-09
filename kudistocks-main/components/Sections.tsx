@@ -9,7 +9,7 @@ function StatCard({ icon, value, description, delay = 0 }: { icon: ReactNode; va
   return (
     <motion.div ref={ref} initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: delay / 1000 }}
       whileHover={{ y: -6, boxShadow: "0 30px 80px rgba(14,30,80,0.45)" }} className="relative">
-      <div className="relative rounded-2xl p-6 md:p-8 overflow-hidden bg-gradient-to-b from-blue-600 to-indigo-700 shadow-lg">
+      <div className="relative p-4 md:p-6 overflow-hidden bg-gradient-to-b from-blue-600 to-indigo-700 shadow-lg">
         <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-white/6" />
         <div className="absolute -bottom-6 -left-6 w-20 h-20 rounded-full bg-white/6" />
         <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-6">{icon}</div>
@@ -18,6 +18,14 @@ function StatCard({ icon, value, description, delay = 0 }: { icon: ReactNode; va
       </div>
     </motion.div>
   );
+}
+
+// ═══════════════════════════════════════
+// SPACER COMPONENT
+// ═══════════════════════════════════════
+export function Spacer({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+  const heights = { sm: "h-8", md: "h-16", lg: "h-24" };
+  return <div className={`w-full bg-white ${heights[size]}`} />;
 }
 
 // ═══════════════════════════════════════
@@ -30,11 +38,11 @@ export function AboutSection() {
       <div className="relative max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 mb-16 md:mb-24">
           <div className="lg:w-1/2">
-            <ScrollFadeUp><div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-6">📚 About us</div></ScrollFadeUp>
+            <ScrollFadeUp><div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-800 border border-blue-100 text-white text-sm font-medium mb-6">📚 About us</div></ScrollFadeUp>
             <ScrollFadeUp delay={100}><h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight">Smart Stock<br />Management</h2></ScrollFadeUp>
           </div>
           <div className="lg:w-1/2 flex items-end">
-            <ScrollFadeUp delay={200}><p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-lg">Kudistocks helps businesses stay organized by tracking inventory, recording sales and purchases, and providing clear insights into daily operations. Everything is built to be simple, practical, and easy to use, with flexible language options to suit your local needs.</p></ScrollFadeUp>
+            <ScrollFadeUp delay={200}><p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-lg font-family: 'Inter', sans-serif;">Kudistocks helps businesses stay organized by tracking inventory, recording sales and purchases, and providing clear insights into daily operations. Everything is built to be simple, practical, and easy to use, with flexible language options to suit your local needs.</p></ScrollFadeUp>
           </div>
         </div>
         <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -70,9 +78,20 @@ export function FeaturesSection() {
     <section id="features" className="relative bg-white text-gray-900 py-20 md:py-32 px-6 md:px-12 lg:px-20">
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-16 md:mb-20">
-          <ScrollFadeUp><div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-6">⚡ Our features: Smart solution for your business</div></ScrollFadeUp>
-          <ScrollFadeUp delay={100}><h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight max-w-3xl mx-auto">Powerful Solutions Your Business Needs</h2></ScrollFadeUp>
-          <ScrollFadeUp delay={200}><p className="mt-5 text-gray-500 text-base md:text-lg max-w-2xl mx-auto">Kudistocks empowers SMEs to manage inventory, track orders, gain real-time AI-driven insights, all in your preferred local language.</p></ScrollFadeUp>
+          <ScrollFadeUp>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-blue-600 text-gray-900 text-sm font-medium mb-6 shadow-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-blue-600"><path d="M12 2l2.6 5.27L20 8.18l-4 3.9L17.2 20 12 16.9 6.8 20 8 12.08 4 8.18l5.4-0.91L12 2z" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <span className="font-semibold">Our features: Smart solution for your business</span>
+            </div>
+          </ScrollFadeUp>
+
+          <ScrollFadeUp delay={100}>
+            <h2 className="text-4xl md:text-5xl lg:text-[50px] font-extrabold leading-[1.02] tracking-tight max-w-3xl mx-auto">Powerful Solutions Your Business Needs</h2>
+          </ScrollFadeUp>
+
+          <ScrollFadeUp delay={200}>
+            <p className="mt-6 text-gray-500 text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">Kudistocks empowers SMEs to manage inventory, track orders, gain real-time AI-driven insights, all in your preferred local language.</p>
+          </ScrollFadeUp>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FeatureCard title="AI-Powered Insights" description="Real-time smart analytics for forecasting, expense optimization, and supplier performance advice." delay={0}>
@@ -128,9 +147,20 @@ export function HowItWorksSection() {
     <section className="relative bg-[#f5f6fa] text-gray-900 py-20 md:py-32 px-6 md:px-12 lg:px-20">
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-16 md:mb-20">
-          <ScrollFadeUp><div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-6">⚡ How It Works: Simplify Your Business Operations</div></ScrollFadeUp>
-          <ScrollFadeUp delay={100}><h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight max-w-3xl mx-auto">Get Started in Minutes</h2></ScrollFadeUp>
-          <ScrollFadeUp delay={200}><p className="mt-5 text-gray-500 text-base md:text-lg max-w-xl mx-auto">Step-by-step solutions to manage inventory, orders, and growth.</p></ScrollFadeUp>
+          <ScrollFadeUp>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-blue-600 text-gray-900 text-sm font-medium mb-6 shadow-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-blue-600"><path d="M3 17h4v4H3zM8 13h4v8H8zM13 9h4v12h-4z" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <span className="font-semibold">How It Works: Simplify Your Business Operations</span>
+            </div>
+          </ScrollFadeUp>
+
+          <ScrollFadeUp delay={100}>
+            <h2 className="text-5xl md:text-6xl lg:text-[56px] font-extrabold leading-[1.02] tracking-tight max-w-3xl mx-auto">Get Started in Minutes</h2>
+          </ScrollFadeUp>
+
+          <ScrollFadeUp delay={200}>
+            <p className="mt-6 text-gray-500 text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">Step-by-step solutions to manage inventory, orders, and growth.</p>
+          </ScrollFadeUp>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto">
           {steps.map((s, i) => (
@@ -161,12 +191,54 @@ export function HowItWorksSection() {
 // TESTIMONIALS
 // ═══════════════════════════════════════
 const testimonials = [
-  { name: "Oluwakemi Kola", role: "Boutique Owner, Lagos", text: "Running a multi-brand boutique, I struggled to keep track of stock. With KudiStocks, I manage everything from one place — like having an extra pair of hands.", initials: "OK", color: "bg-blue-500" },
-  { name: "Mariam Bong", role: "Cosmetics Store Owner", text: "I used manual records prone to errors. KudiStocks transformed how I track stock. Now I see what's selling fast and make restocking decisions instantly.", initials: "MB", color: "bg-purple-500" },
-  { name: "Ifedolapo Abiodun", role: "Supermarket Manager, Ibadan", text: "Speed and accuracy matter. KudiStocks helps us track hundreds of products seamlessly. AI insights help forecast demand and reduce waste.", initials: "IA", color: "bg-pink-500" },
-  { name: "Chubuike Chidi", role: "Electronics Store, Aba", text: "The multi-store feature is gold! I operate two locations and monitor both from my phone. Stock alerts saved us from running out of top-sellers.", initials: "CC", color: "bg-teal-500" },
-  { name: "Torera Kunle", role: "Pharmacy Owner, Kano", text: "Accurate stock tracking is critical for my pharmacy. KudiStocks gives real-time data on every product. Restocking alerts are game-changers.", initials: "TK", color: "bg-orange-500" },
-  { name: "Chi. Jessica", role: "Fashion Designer, Enugu", text: "I struggled with fabric inventory. KudiStocks made it simple to track orders and connect with customers better.", initials: "CJ", color: "bg-rose-500" },
+  {
+    name: "Christine Kate",
+    role: "",
+    text: "Kudistocks completely changed how I run my business. I can track inventory, manage orders, and understand my sales clearly all in one app and in a language I’m comfortable with.",
+    initials: "CK",
+    color: "bg-pink-300",
+    rating: 4.8,
+  },
+  {
+    name: "Martin King",
+    role: "",
+    text: "Running my business is faster and more organized with Kudistocks. Inventory, orders, and records are all in one place.",
+    initials: "MK",
+    color: "bg-pink-200",
+    rating: 4.2,
+  },
+  {
+    name: "Habeeb Fatimah",
+    role: "",
+    text: "Kudistocks helps me stay on top of my inventory and finances. The insights help me make better decisions, and managing my business feels less stressful.",
+    initials: "HF",
+    color: "bg-pink-100",
+    rating: 4.5,
+  },
+  {
+    name: "Chubby Chuks",
+    role: "",
+    text: "The insights from Kudistocks help me plan better and avoid running out of stock. It feels like having an extra hand in my business",
+    initials: "CC",
+    color: "bg-yellow-300",
+    rating: 4.6,
+  },
+  {
+    name: "Towne Kora",
+    role: "",
+    text: "As my business grew, Kudistocks grew with me. Managing stock, orders, and multiple stores is now stress-free.",
+    initials: "TK",
+    color: "bg-slate-600",
+    rating: 4.7,
+  },
+  {
+    name: "Olu Jacobs",
+    role: "",
+    text: "Before Kudistocks, I struggled with stock and records. Now I manage inventory, track orders, and see my sales and purchases in real time. It’s simple, smart, and built for businesses like mine.",
+    initials: "OJ",
+    color: "bg-pink-300",
+    rating: 4.9,
+  },
 ];
 
 export function TestimonialsSection() {
@@ -174,17 +246,36 @@ export function TestimonialsSection() {
     <section id="testimonial" className="relative bg-white text-gray-900 py-20 md:py-32 px-6 md:px-12 lg:px-20">
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-16 md:mb-20">
-          <ScrollFadeUp><div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-6">💬 Testimonials</div></ScrollFadeUp>
-          <ScrollFadeUp delay={100}><h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight max-w-3xl mx-auto">Real Stories from Business owners</h2></ScrollFadeUp>
-          <ScrollFadeUp delay={200}><p className="mt-5 text-gray-500 text-base md:text-lg max-w-2xl mx-auto">From small shops to growing businesses, hear from founders who use KudiStocks to stay organized and grow with confidence.</p></ScrollFadeUp>
+          <ScrollFadeUp>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-blue-600 text-gray-900 text-sm font-medium mb-6 shadow-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-blue-600"><path d="M7 7h10v10H7z" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 9v6M15 9v6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span className="font-semibold">Testimonial: What our user say</span>
+            </div>
+          </ScrollFadeUp>
+
+          <ScrollFadeUp delay={100}>
+            <h2 className="text-5xl md:text-6xl lg:text-[56px] font-bold leading-[1.02] tracking-tight max-w-3xl mx-auto">Real Stories from Business owners</h2>
+          </ScrollFadeUp>
+
+          <ScrollFadeUp delay={200}>
+            <p className="mt-6 text-gray-500 text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">From small shops to growing enterprises, business owners trust Kudistocks to stay organized, make smarter decisions, and grow with confidence.</p>
+          </ScrollFadeUp>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <ScrollFadeUp key={i} delay={(i % 3) * 150}>
-              <motion.div whileHover={{ y: -6, boxShadow: "0 20px 60px rgba(0,0,0,0.08)" }} className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col h-full shadow-sm">
-                <div className="flex gap-0.5 mb-4">{[...Array(5)].map((_, j) => (<svg key={j} viewBox="0 0 20 20" fill="#facc15" className="w-4 h-4"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>))}</div>
-                <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-6">{t.text}</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-gray-100"><div className={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center text-white text-sm font-bold`}>{t.initials}</div><div><p className="text-sm font-semibold text-gray-900">{t.name}</p><p className="text-xs text-gray-400">{t.role}</p></div></div>
+              <motion.div whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(2,6,23,0.06)" }} className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col h-full shadow-sm min-h-[340px] md:min-h-[360px]">
+                <div className="flex flex-col items-center">
+                  <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full ${t.color} flex items-center justify-center text-white text-xl md:text-2xl font-bold mb-3`}>{t.initials}</div>
+                  <p className="text-sm md:text-base font-semibold text-gray-900 text-center">{t.name}</p>
+                  <p className="text-xs text-gray-500 mt-1 text-center flex items-center gap-2"><span className="text-sm font-semibold text-gray-900">{t.rating}</span><svg viewBox="0 0 20 20" className="w-3 h-3 text-green-500"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill="currentColor"/></svg></p>
+                </div>
+
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed mt-6 mb-6 text-center">{t.text}</p>
+
+                <div className="mt-auto flex justify-center">
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 text-gray-200"><path d="M7.17 6A4.01 4.01 0 003 10.17C3 12 4 13 5.91 13c.03 0 .06 0 .09-.01.67-.06 1.17-.27 1.55-.54.37-.27.62-.64.77-1.08.24-.66.14-1.42-.23-2.1-.33-.6-.95-.98-1.92-.97zM17.17 6A4.01 4.01 0 0013 10.17C13 12 14 13 15.91 13c.03 0 .06 0 .09-.01.67-.06 1.17-.27 1.55-.54.37-.27.62-.64.77-1.08.24-.66.14-1.42-.23-2.1-.33-.6-.95-.98-1.92-.97z" fill="currentColor"/></svg>
+                </div>
               </motion.div>
             </ScrollFadeUp>
           ))}
@@ -209,15 +300,20 @@ export function CTASection() {
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
           <div className="w-full lg:w-1/2 text-center lg:text-left z-10">
             <ScrollFadeUp>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-blue-200 mb-6">⚡ Get Started: Power Your Business with Smarter Insights</div>
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 border-blue-600 bg-transparent text-white text-base font-semibold mb-6 shadow-sm">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="w-5 h-5 text-white"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z" strokeLinecap="round" strokeLinejoin="round"/><path d="M8 12l2 2 6-6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <span>Join Now: Smarter Control Starts Here</span>
+              </div>
             </ScrollFadeUp>
 
             <ScrollFadeUp delay={100}>
-              <h2 className="text-4xl md:text-5xl lg:text-[56px] xl:text-[64px] font-extrabold leading-tight text-white">Make Smarter Business Decisions, Just Like Other Business Owners</h2>
+              <h1 className="text-4xl md:text-6xl lg:text-[50px] leading-[0.98] font-bold text-white tracking-tight max-w-[900px] mx-auto lg:mx-0 text-center lg:text-left">
+                Make Smarter Business<br/>Decisions, Just Like<br/>Other Business Owners
+              </h1>
             </ScrollFadeUp>
 
             <ScrollFadeUp delay={200}>
-              <p className="mt-5 text-blue-200/80 text-base md:text-lg max-w-2xl">Join over 500,000 active users managing inventory, orders, and sales with Kudistocks every day.</p>
+              <p className="mt-5 text-blue-200/80 text-base md:text-lg max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">Join over 500,000 active users managing inventory, orders, and sales with Kudistocks every day.</p>
             </ScrollFadeUp>
 
             <ScrollFadeUp delay={300}>
@@ -228,27 +324,53 @@ export function CTASection() {
             </ScrollFadeUp>
 
             <div className="mt-10 lg:mt-14">
-              <div className="w-full max-w-md mx-auto lg:mx-0">
-                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                  {[
-                    "Faster Daily Operation",
-                    "Live Inventory Tracking",
-                    "Smarter AI Insights",
-                    "Clear Financial Visibility",
-                    "Smarter Stock Decision",
-                    "Organized Orders & Sales",
-                  ].map((t, idx) => {
-                    const smallRotations = [-6, 6, -3, 3, -2, 2];
-                    return (
-                      <span
-                        key={t}
-                        className="inline-block bg-white/6 text-white text-sm px-4 py-2 rounded-full shadow-md"
-                        style={{ transform: `rotate(${smallRotations[idx]}deg)` }}
-                      >
-                        {t}
-                      </span>
-                    );
-                  })}
+              <div className="max-w-2xl mx-auto text-center">
+                <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-transparent border border-white/10 text-white/90 text-sm font-medium mb-6 justify-center">
+                  <img src="https://img.icons8.com/?size=100&id=8o7BHnFtWFwV&format=png&color=000000" alt="rocket" className="w-5 h-5" />
+                  <span>Take the Next Step</span>
+                </div>
+
+                <h1 className="text-4xl md:text-5xl lg:text-[64px] font-extrabold text-white leading-tight mb-4">Take Control of Your Business Operations</h1>
+
+                <p className="text-blue-200/60 text-lg md:text-xl max-w-2xl mx-auto mb-8">Plan smarter, manage inventory, and make better decisions with AI-driven insights.</p>
+
+                <form className="w-full" onSubmit={(e) => e.preventDefault()}>
+                  <div className="px-6">
+                    <input
+                      aria-label="Email"
+                      type="email"
+                      placeholder="Enter your email"
+                      className="w-full bg-transparent border border-white/10 rounded-full py-5 px-6 placeholder:text-slate-400 text-slate-100 text-lg md:text-xl outline-none backdrop-blur-sm"
+                    />
+                  </div>
+
+                  <div className="mt-6 flex justify-center">
+                    <button type="submit" className="bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white px-12 py-4 rounded-full text-lg font-semibold shadow-2xl">Get Started</button>
+                  </div>
+                </form>
+
+                <div className="mt-8">
+                  <div className="flex flex-wrap gap-4 justify-center">
+                    {[
+                      "Faster Daily Operation",
+                      "Live Inventory Tracking",
+                      "Smarter AI Insights",
+                      "Clear Financial Visibility",
+                      "Smarter Stock Decision",
+                      "Organized Orders & Sales",
+                    ].map((t, idx) => {
+                      const smallRotations = [-6, 6, -3, 3, -2, 2];
+                      return (
+                        <span
+                          key={t}
+                          className="inline-block bg-white/6 text-white text-sm px-4 py-2 rounded-full shadow-md"
+                          style={{ transform: `rotate(${smallRotations[idx]}deg)` }}
+                        >
+                          {t}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
@@ -302,7 +424,12 @@ export function FAQSection() {
     <section id="faqs" className="relative bg-white text-gray-900 py-20 md:py-32 px-6 md:px-12 lg:px-20">
       <div className="relative max-w-3xl mx-auto">
         <div className="text-center mb-16">
-          <ScrollFadeUp><div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-6">❓ FAQs</div></ScrollFadeUp>
+          <ScrollFadeUp>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 border-blue-600 bg-white text-gray-900 text-base font-semibold mb-6 shadow-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5 text-blue-600"><path d="M6.5 11.5l10-10 6 6-10 10L6.5 11.5z" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span>FAQs: Learn More About Kudistocks</span>
+            </div>
+          </ScrollFadeUp>
           <ScrollFadeUp delay={100}><h2 className="text-4xl md:text-5xl font-extrabold leading-[1.1] tracking-tight">Helpful Answers Before You Get Started</h2></ScrollFadeUp>
           <ScrollFadeUp delay={200}><p className="mt-5 text-gray-500 text-base md:text-lg max-w-xl mx-auto">Find answers about how KudiStocks works, its features, and how it helps SMEs manage operations with confidence.</p></ScrollFadeUp>
         </div>
@@ -323,13 +450,28 @@ export function FooterCTA() {
       <div className="absolute inset-0 grid-bg opacity-30" />
       <GlowOrb className="w-72 h-72 bg-blue-500 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={0} />
       <div className="relative max-w-3xl mx-auto text-center">
-      <ScrollFadeUp><div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-blue-200 mb-6">🚀 Take the Next Step</div></ScrollFadeUp>
+      <ScrollFadeUp><div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-blue-200 mb-6"><img src="https://img.icons8.com/?size=100&id=8o7BHnFtWFwV&format=png&color=000000" alt="rocket" className="w-4 h-4" /><span className="ml-1">Join Now: Smarter control starts here</span></div></ScrollFadeUp>
       <ScrollFadeUp delay={100}><h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.1] text-white">Take Control of Your Business Operations</h2></ScrollFadeUp>
       <ScrollFadeUp delay={200}><p className="mt-5 text-blue-200/60 text-base md:text-lg max-w-lg mx-auto">Plan smarter, manage inventory, and make better decisions with AI-driven insights.</p></ScrollFadeUp>
       <ScrollFadeUp delay={300}>
-        <div className="mt-10 flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto">
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="w-full flex-1 px-5 py-3.5 rounded-full bg-white/10 border border-white/15 text-white placeholder-blue-200/40 text-sm focus:outline-none focus:border-blue-400/50 transition-all" />
-        <button className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 whitespace-nowrap">Get Started</button>
+        <div className="mt-10 max-w-3xl mx-auto px-6">
+          <div className="rounded-full bg-white/6 border border-white/10 p-1">
+            <div className="relative rounded-full overflow-hidden">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="w-full bg-transparent placeholder:text-slate-300 text-slate-100 text-lg md:text-xl px-6 pr-28 md:pr-40 py-5 outline-none"
+              />
+              <button
+                type="submit"
+                className="absolute right-1 top-1/2 -translate-y-1/2 bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white px-4 md:px-8 py-3 md:py-4 rounded-full font-semibold shadow-2xl"
+              >
+                Get Started
+              </button>
+            </div>
+          </div>
         </div>
       </ScrollFadeUp>
       </div>
@@ -346,9 +488,9 @@ const FOOTER_SECTIONS = {
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#060a1e] text-gray-400 pt-16 pb-12 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-[#07102a] via-[#0e2a6b] to-[#0b1666] text-gray-300 pt-16 pb-12 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-16">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-12">
           <div className="lg:w-1/3">
             <h3 className="text-white text-2xl md:text-3xl font-bold leading-tight">
               Run your business<br />with confidence
@@ -358,11 +500,11 @@ export function Footer() {
           <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-8">
             {Object.entries(FOOTER_SECTIONS).map(([title, links]) => (
               <div key={title}>
-                <h4 className="text-gray-500 text-sm font-medium mb-4">{title}</h4>
+                <h4 className="text-gray-300/70 text-sm font-medium mb-4">{title}</h4>
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link}>
-                      <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200 underline decoration-gray-700 underline-offset-4 hover:decoration-white">
+                      <a href="#" className="text-gray-200/80 hover:text-white text-sm transition-colors duration-200">
                         {link}
                       </a>
                     </li>
@@ -373,35 +515,19 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="bg-[#0a0e17] px-6 py-12 md:py-16 flex flex-col items-center justify-center min-h-[50vh] relative">
-        <p className="text-gray-600/70 text-xs md:text-sm tracking-wide absolute top-6 left-1/2 -translate-x-1/2">
-            © 2025. All rights reserved
-        </p>
+            <div className="bg-transparent px-6 py-10 md:py-16 flex items-center justify-center min-h-[28vh] relative overflow-visible rounded-b-lg">
+              <p className="text-gray-400/60 text-xs md:text-sm tracking-wide absolute top-6 left-6 z-30">
+                © 2025. All rights reserved
+              </p>
 
-  <div className="flex items-end gap-4 md:gap-5 mt-8 md:mt-0">
-    <img
-      src="/images/logo2.png"
-      alt=""
-      className="h-16 w-16 md:h-20 md:w-20 object-contain opacity-75 brightness-[0.85] contrast-[1.15]"
-    />
+              <img src="/images/logo2.png" alt="mark" className="absolute left-1 top-1/2 -translate-y-1/2 h-[80px] md:h-[120px] lg:h-[140px] opacity-30 z-0 object-contain" />
 
-    <div className="flex flex-col items-start">
-      <span
-        className="
-          text-[3.5rem] leading-none
-          md:text-[5rem] lg:text-[6.5rem]
-          font-black tracking-[-0.04em]
-          text-gray-300/90
-        "
-      >
-        Kudistocks
-      </span>
-      <span className="text-gray-500/60 text-base md:text-lg font-light tracking-wide pl-1.5">
-        stocks.
-      </span>
-    </div>
-  </div>
-</div>
+              <div className="w-full flex items-center justify-center pl-14 md:pl-24 lg:pl-32">
+                <span className="leading-[0.95] font-extrabold text-gray-400/75 tracking-tight select-none z-10 text-[clamp(40px,8vw,90px)]">
+                  Kudistocks<span className="inline-block align-middle">.</span>
+                </span>
+              </div>
+            </div>
       </div>
     </footer>
   );

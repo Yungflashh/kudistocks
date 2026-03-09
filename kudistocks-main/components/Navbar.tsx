@@ -29,8 +29,10 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center gap-4">
-        <button className="hidden md:flex items-center gap-1 text-sm text-gray-300">
-          <span className="w-5 h-5 rounded-full bg-gray-700 flex items-center justify-center text-xs">🌐</span>
+        <button className="flex items-center gap-1 text-sm text-gray-300 cursor-pointer">
+          <span className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-xs">
+            <img src="https://img.icons8.com/?size=100&id=gShLyPQH6Q4z&format=png&color=000000" alt="globe" className="w-8 h-8" />
+          </span>
           EN
         </button>
 
@@ -46,10 +48,6 @@ export default function Navbar() {
         </button>
 
         <button className="md:hidden text-white flex items-center gap-3" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
-          <span className="hidden sm:inline-flex items-center gap-1">
-            <span className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center text-xs">🌐</span>
-            <span className="text-sm">EN</span>
-          </span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
             {mobileOpen ? (
               <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
@@ -75,7 +73,9 @@ export default function Navbar() {
               </div>
               <div className="flex items-center gap-3">
                 <button className="flex items-center gap-1 text-sm text-gray-200">
-                  <span className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center text-xs">🌐</span>
+                  <span className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center text-xs">
+                    <img src="https://img.icons8.com/?size=100&id=9xygBPzKrg89&format=png&color=000000" alt="globe" className="w-5 h-5" />
+                  </span>
                   EN
                 </button>
                 <button className="text-white" onClick={() => setMobileOpen(false)} aria-label="Close menu">
