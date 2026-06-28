@@ -101,49 +101,146 @@ export default function Hero() {
         </FadeUp>
       </div>
 
-      {/* Phone + floating image cards — full bleed, bottom anchored */}
-      <FadeUp delay={850} className="relative z-10 mt-10 sm:mt-12 md:mt-14 w-full px-0 sm:px-6 md:px-10">
-        <div className="relative w-full h-auto sm:h-[400px] md:h-[480px] lg:h-[520px]">
-          {/* OUTER LEFT — Stock flow (flush to edge) */}
+      {/*
+       * =====================================================================
+       * IMAGES SECTION — all 5 images in a single horizontal row
+       * Tailwind breakpoints: (default)=mobile  sm=640px  md=768px  lg=1024px
+       * =====================================================================
+       *
+       * CONTAINER HEIGHT — controls how tall the image area is
+       *   mobile:  h-[220px]   ← change this first number to raise/lower on mobile
+       *   tablet:  sm:h-[400px] ← change for tablet (640px+)
+       *   laptop:  md:h-[480px] ← change for small laptop (768px+)
+       *   desktop: lg:h-[520px] ← change for large desktop (1024px+)
+       * =====================================================================
+       */}
+      <FadeUp delay={850} className="relative z-10 mt-10 sm:mt-12 md:mt-14 w-full">
+        <div className="relative w-full
+          h-[220px]
+          sm:h-[400px]
+          md:h-[480px]
+          lg:h-[520px]
+        ">
+
+          {/*
+           * ── OUTER LEFT: Stock flow ──────────────────────────────────────
+           * SIZE     → w-[22%]        (mobile)  change % to resize the card
+           *          → sm:w-[34%]     (tablet)
+           *          → md:w-[26%]     (laptop)
+           *          → lg:w-[18%]     (desktop)
+           *
+           * POSITION → left-0         (mobile)  always pinned to left edge
+           *          → bottom-0       all sizes, always sits at the bottom
+           * ───────────────────────────────────────────────────────────────
+           */}
           <FloatingImage
             src="/hero/Stock flow.png"
             alt="Stock flow"
             from="left"
             delay={1400}
-            className="block z-0 opacity-40 sm:opacity-100 w-[44%] sm:w-[34%] md:w-[26%] lg:w-[18%] left-0 bottom-0"
+            className="z-0
+              w-[22%]
+              sm:w-[34%]
+              md:w-[26%]
+              lg:w-[18%]
+              left-0 bottom-0"
           />
 
-          {/* INNER LEFT — AI chat (tucked behind phone) */}
+          {/*
+           * ── INNER LEFT: AI chat ─────────────────────────────────────────
+           * SIZE     → w-[22%]        (mobile)
+           *          → sm:w-[26%]     (tablet)
+           *          → md:w-[22%]     (laptop)
+           *          → lg:w-[19%]     (desktop)
+           *
+           * POSITION → left-[22%]     (mobile)  nudge right to avoid overlap
+           *          → sm:left-[30%]  (tablet)   ↑ increase to push further right
+           *          → md:left-[24%]  (laptop)   ↓ decrease to pull further left
+           *          → lg:left-[19%]  (desktop)
+           * ───────────────────────────────────────────────────────────────
+           */}
           <FloatingImage
             src="/hero/Ai chat.png"
             alt="AI chat assistant"
             from="left"
             delay={1700}
-            className="hidden lg:block z-0 w-[19%] left-[19%] bottom-0"
+            className="z-0
+              w-[22%]     left-[22%]
+              sm:w-[26%]  sm:left-[30%]
+              md:w-[22%]  md:left-[24%]
+              lg:w-[19%]  lg:left-[19%]
+              bottom-0"
           />
 
-          {/* INNER RIGHT — Analytics / Earnings (tucked behind phone) */}
+          {/*
+           * ── INNER RIGHT: Analytics / Earnings ──────────────────────────
+           * SIZE     → w-[22%]        (mobile)
+           *          → sm:w-[26%]     (tablet)
+           *          → md:w-[22%]     (laptop)
+           *          → lg:w-[19%]     (desktop)
+           *
+           * POSITION → right-[22%]    (mobile)  nudge left to avoid overlap
+           *          → sm:right-[30%] (tablet)   ↑ increase to push further left
+           *          → md:right-[24%] (laptop)   ↓ decrease to pull further right
+           *          → lg:right-[19%] (desktop)
+           * ───────────────────────────────────────────────────────────────
+           */}
           <FloatingImage
             src="/hero/Analytics - Earnings.png"
             alt="Analytics earnings"
             from="right"
             delay={1500}
-            className="hidden lg:block z-0 w-[19%] right-[19%] bottom-0"
+            className="z-0
+              w-[22%]     right-[22%]
+              sm:w-[26%]  sm:right-[30%]
+              md:w-[22%]  md:right-[24%]
+              lg:w-[19%]  lg:right-[19%]
+              bottom-0"
           />
 
-          {/* OUTER RIGHT — Order summary (flush to edge) */}
+          {/*
+           * ── OUTER RIGHT: Order summary ──────────────────────────────────
+           * SIZE     → w-[22%]        (mobile)  change % to resize the card
+           *          → sm:w-[34%]     (tablet)
+           *          → md:w-[26%]     (laptop)
+           *          → lg:w-[18%]     (desktop)
+           *
+           * POSITION → right-0        (mobile)  always pinned to right edge
+           *          → bottom-0       all sizes, always sits at the bottom
+           * ───────────────────────────────────────────────────────────────
+           */}
           <FloatingImage
             src="/hero/Order summary.png"
             alt="Order summary"
             from="right"
             delay={1800}
-            className="block z-0 opacity-40 sm:opacity-100 w-[44%] sm:w-[34%] md:w-[26%] lg:w-[18%] right-0 bottom-0"
+            className="z-0
+              w-[22%]
+              sm:w-[34%]
+              md:w-[26%]
+              lg:w-[18%]
+              right-0 bottom-0"
           />
 
-          {/* CENTER — phone in hand.
-              Width + horizontal shift are responsive; the lg layout is your tuned one.
-              To nudge left/right on desktop, change lg:translate-x-[127px]. */}
-          <div className="relative mx-auto sm:absolute sm:inset-x-0 sm:bottom-0 z-10 w-full max-w-[440px] sm:max-w-none sm:w-[360px] md:w-[480px] lg:w-[680px] lg:translate-x-[127px]">
+          {/*
+           * ── CENTER: Phone mockup ────────────────────────────────────────
+           * SIZE     → w-[44%]        (mobile)  make wider/narrower on mobile
+           *          → sm:w-[360px]   (tablet)  fixed px width from here up
+           *          → md:w-[480px]   (laptop)
+           *          → lg:w-[680px]   (desktop)
+           *
+           * POSITION → lg:translate-x-[127px]   nudges phone slightly right
+           *            on desktop to account for asymmetric card layout.
+           *            Change 127px to shift left (lower) or right (higher).
+           * ───────────────────────────────────────────────────────────────
+           */}
+          <div className="absolute inset-x-0 bottom-0 z-10 mx-auto
+            w-[44%]
+            sm:w-[360px]
+            md:w-[420px]
+            lg:w-[480px]
+            lg:translate-x-[15px]
+          ">
             <motion.img
               src="/hero/Mockup.png"
               alt="KudiStocks mobile app"
@@ -154,6 +251,7 @@ export default function Hero() {
             />
           </div>
 
+          {/* Bottom fade — blends images into the section below */}
           <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#080c1e] to-transparent z-30 pointer-events-none" />
         </div>
       </FadeUp>
