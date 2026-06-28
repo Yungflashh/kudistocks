@@ -2,12 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap");
 
 * {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #080c1e;
+}
+
+/* ─── Animations ─── */
 @keyframes float {
   0% {
     transform: translate(0, 0) scale(1);
@@ -26,38 +35,35 @@
   }
 }
 
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.15;
-  }
-  50% {
-    opacity: 0.25;
-  }
-}
-
+/* ─── Decorative ─── */
 .grid-bg {
   background-image: linear-gradient(
-      rgba(59, 130, 246, 0.03) 1px,
+      rgba(59, 130, 246, 0.05) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
+}
+
+.dot-bg {
+  background-image: radial-gradient(circle, #2e3fc7 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 .shimmer-text {
   background: linear-gradient(90deg, #fff 40%, #93c5fd 50%, #fff 60%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 4s ease-in-out infinite;
+  animation: shimmer 5s ease-in-out infinite;
 }
 
-html {
-  scroll-behavior: smooth;
+/* hide scrollbar for marquees if needed */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-.KudiStocks-mobile{
-  height: auto;
-  width: auto;
-  margin-bottom: 0px;
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
