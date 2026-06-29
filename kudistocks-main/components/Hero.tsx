@@ -105,7 +105,7 @@ export default function Hero() {
       </div>
 
       {/* IMAGES SECTION */}
-      <FadeUp delay={850} className="relative z-10 w-full mt-12 sm:mt-auto self-end">
+      <FadeUp delay={850} className="relative  w-full mt-12 sm:mt-auto self-end">
         <div className="relative w-full overflow-visible
           h-[280px] 
           xs:h-[340px]
@@ -168,7 +168,7 @@ export default function Hero() {
           />
 
           {/* CENTER: Phone mockup */}
-          <div className="absolute inset-x-0 bottom-0 z-10 mx-auto flex justify-center
+          <div className="absolute inset-x-0 bottom-0  mx-auto flex justify-center
             w-[72%]
             xs:w-[64%]
             sm:w-[320px]
