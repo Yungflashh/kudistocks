@@ -83,7 +83,7 @@ export default function FAQ() {
   return (
     <section
       id="faqs"
-      className="relative bg-white text-gray-900 py-20 md:py-32 px-6 md:px-12 lg:px-20"
+      className="relative bg-white text-gray-900 py-16 md:py-24 px-6 md:px-12 lg:px-20"
     >
       <div className="relative max-w-3xl mx-auto">
         <div className="text-center mb-16">

@@ -45,7 +45,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative bg-white text-gray-900 py-20 md:py-32 px-6 md:px-12 lg:px-20"
+      className="relative bg-white text-gray-900 py-10 md:py-22 px-6 md:px-12 lg:px-20"
     >
       <div className="absolute inset-0 dot-bg opacity-[0.03]" />
       <div className="relative max-w-7xl mx-auto">
