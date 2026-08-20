@@ -13,7 +13,7 @@ const FOOTER_SECTIONS: Record<string, FooterLink[]> = {
   Company: [
     { label: "Privacy & Policy", href: "/privacy-policy" },
     { label: "Terms & Condition", href: "#" },
-    { label: "Help center", href: "#" },
+    { label: "Help center", href: "/support" },
     { label: "Contact us", href: "mailto:support@kudistocks.com" },
   ],
   Social: [
