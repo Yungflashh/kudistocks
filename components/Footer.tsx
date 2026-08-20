@@ -1,9 +1,27 @@
 "use client";
 
-const FOOTER_SECTIONS: Record<string, string[]> = {
-  Sections: ["About us", "Features", "Testimonial", "FAQs", "Download now"],
-  Company: ["Privacy & Policy", "Terms & Condition", "Help center", "Contact us"],
-  Social: ["Twitter (X)", "Instagram", "Facebook", "LinkedIn"],
+type FooterLink = { label: string; href: string };
+
+const FOOTER_SECTIONS: Record<string, FooterLink[]> = {
+  Sections: [
+    { label: "About us", href: "/#about" },
+    { label: "Features", href: "/#features" },
+    { label: "Testimonial", href: "/#testimonial" },
+    { label: "FAQs", href: "/#faqs" },
+    { label: "Download now", href: "/#home" },
+  ],
+  Company: [
+    { label: "Privacy & Policy", href: "/privacy-policy" },
+    { label: "Terms & Condition", href: "#" },
+    { label: "Help center", href: "#" },
+    { label: "Contact us", href: "mailto:support@kudistocks.com" },
+  ],
+  Social: [
+    { label: "Twitter (X)", href: "#" },
+    { label: "Instagram", href: "#" },
+    { label: "Facebook", href: "#" },
+    { label: "LinkedIn", href: "#" },
+  ],
 };
 
 export default function Footer() {
@@ -32,12 +50,12 @@ export default function Footer() {
                 </h4>
                 <ul className="space-y-3">
                   {links.map((link) => (
-                    <li key={link}>
+                    <li key={link.label}>
                       <a
-                        href="#"
+                        href={link.href}
                         className="text-gray-400 hover:text-white text-sm transition-colors duration-200 block"
                       >
-                        {link}
+                        {link.label}
                       </a>
                     </li>
                   ))}
